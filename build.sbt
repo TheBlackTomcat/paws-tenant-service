@@ -1,10 +1,10 @@
 lazy val tenant = (project in file("."))
   .settings(
-    name := "tenant-service",
+    name := "paws-tenant-service",
     version := "0.1.0-SNAPSHOT",
-    organization := "paws",
+    organization := "com.theblacktomcat.paws",
     scalaVersion := "2.12.1",
     libraryDependencies ++= Seq(
-      "paws" %% "service" % "0.1.0-SNAPSHOT"
+      "com.theblacktomcat.paws" %% "paws-service-library" % "0.1.0-SNAPSHOT"
     )
   )
