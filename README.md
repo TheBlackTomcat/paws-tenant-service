@@ -1,1 +1,1 @@
-# paws-tenant-service
+# pawzzle-tenant-service
