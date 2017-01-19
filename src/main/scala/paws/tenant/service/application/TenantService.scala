@@ -29,5 +29,5 @@ class TheTenantService extends TenantService {
     repo.get(EntityID(id)).map(TenantMapper.mapToData)
   }
 
-  override def provisionTenant(id: String): Unit = throw UnsupportedOperationException
+  override def provisionTenant(id: String): Unit = throw new UnsupportedOperationException
 }
