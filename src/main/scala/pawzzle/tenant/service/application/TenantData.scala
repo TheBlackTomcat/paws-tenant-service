@@ -1,8 +1,8 @@
-package paws.tenant.service.application
+package pawzzle.tenant.service.application
 
-import paws.library.service.application.DataTransferObject
-import paws.library.service.domain.Factory
-import paws.tenant.service.domain.Tenant
+import pawzzle.library.service.application.DataTransferObject
+import pawzzle.library.service.domain.Factory
+import pawzzle.tenant.service.domain.Tenant
 
 /**
   * Trait that groups together all the data transfer objects related to the Tenant bounded context.

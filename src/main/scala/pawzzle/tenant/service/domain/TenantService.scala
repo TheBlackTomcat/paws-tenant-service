@@ -1,6 +1,6 @@
-package paws.tenant.service.domain
+package pawzzle.tenant.service.domain
 
-import paws.library.service.domain.{EntityID, Service}
+import pawzzle.library.service.domain.{EntityID, Service}
 
 /**
   * Domain Service for Tenant related operations that cannot be expressed inside the Tenant aggregate due to increased

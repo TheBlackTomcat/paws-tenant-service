@@ -1,9 +1,9 @@
-package paws.tenant.service.application
+package pawzzle.tenant.service.application
 
-import paws.library.service.application.Service
-import paws.library.service.domain.EntityID
-import paws.tenant.service.domain.{Tenant, TenantName, TenantRepository}
-import paws.tenant.service.infrastructure.storage.MemoryTenantRepository
+import pawzzle.library.service.application.Service
+import pawzzle.library.service.domain.EntityID
+import pawzzle.tenant.service.domain.{Tenant, TenantName, TenantRepository}
+import pawzzle.tenant.service.infrastructure.storage.MemoryTenantRepository
 
 /**
   * The TenantService trait defining the possible operations on the Tenant domain.

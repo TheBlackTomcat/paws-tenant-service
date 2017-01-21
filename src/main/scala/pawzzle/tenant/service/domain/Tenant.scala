@@ -1,6 +1,6 @@
-package paws.tenant.service.domain
+package pawzzle.tenant.service.domain
 
-import paws.library.service.domain._
+import pawzzle.library.service.domain._
 
 /**
   * The Tenant aggregate root entity.

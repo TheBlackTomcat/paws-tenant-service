@@ -1,8 +1,8 @@
-package paws.tenant.service.infrastructure.storage
+package pawzzle.tenant.service.infrastructure.storage
 
-import paws.library.service.domain.EntityID
-import paws.library.service.infrastructure.StorageAdapter
-import paws.tenant.service.domain.{Tenant, TenantRepository}
+import pawzzle.library.service.domain.EntityID
+import pawzzle.library.service.infrastructure.StorageAdapter
+import pawzzle.tenant.service.domain.{Tenant, TenantRepository}
 
 /**
   * Dummy in-memory implementation of the tenant repository as a storage adapter.

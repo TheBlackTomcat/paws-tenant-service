@@ -1,6 +1,6 @@
-package paws.tenant.service.domain
+package pawzzle.tenant.service.domain
 
-import paws.library.service.domain.{EntityID, Repository}
+import pawzzle.library.service.domain.{EntityID, Repository}
 
 /**
   * Trait that defines the possible operations related to data storage for the Tenant aggregate.

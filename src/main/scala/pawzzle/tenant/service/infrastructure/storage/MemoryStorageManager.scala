@@ -1,4 +1,4 @@
-package paws.tenant.service.infrastructure.storage
+package pawzzle.tenant.service.infrastructure.storage
 
 import scala.collection.mutable
 
