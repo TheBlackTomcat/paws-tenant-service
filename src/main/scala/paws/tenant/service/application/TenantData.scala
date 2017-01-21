@@ -1,12 +1,47 @@
 package paws.tenant.service.application
 
 import paws.library.service.application.DataTransferObject
-import paws.library.service.domain.EntityID
-import paws.tenant.service.domain.{Tenant, TenantName}
+import paws.library.service.domain.Factory
+import paws.tenant.service.domain.Tenant
 
-case class TenantData(id: Option[String], name: String) extends DataTransferObject
+/**
+  * Trait that groups together all the data transfer objects related to the Tenant bounded context.
+  */
+sealed trait TenantData extends DataTransferObject
 
-protected object TenantMapper {
-  def mapToData(tenant: Tenant): TenantData = TenantData(Some(tenant.id.id), tenant.name.name)
-  def mapToEntity(id: EntityID, tenantData: TenantData) = Tenant(id, TenantName(tenantData.name))
+/**
+  * Data transfer object used as input for the createTenant operation in the application service TenantService.
+  * @param name The name of the tenant to be created.
+  */
+case class CreateTenantInputData(name: String) extends TenantData
+
+/**
+  * Data transfer object used as input for the loadTenant operation in the application service TenantService.
+  * @param id The id of the tenant to be loaded.
+  */
+case class LoadTenantInputData(id: String) extends TenantData
+
+/**
+  * Data transfer object used as output for the loadTenant operation in the application service TenantService.
+  * @param id The id of the loaded tenant.
+  * @param name The name of the loaded tenant.
+  * @param status The status of the loaded tenant.
+  */
+case class LoadTenantOutputData(id: String, name: String, status: String) extends TenantData
+
+/**
+  * Data transfer object used as input for the provisionTenant operation in the application service TenantService.
+  * @param id The id of the tenant to be provisioned.
+  */
+case class ProvisionTenantInputData(id: String) extends TenantData
+
+/**
+  * Factory for creating a LoadTenantOutputData based on a Tenant entity.
+  * This is private[application] since it must not be used outside the application layer, as we do not want our domain
+  * entity Tenant leaked out of the application boundary.
+  */
+private[application] object LoadTenantOutputData extends Factory {
+  def apply(tenant: Tenant): LoadTenantOutputData = {
+    LoadTenantOutputData(tenant.id.id, tenant.name.name, tenant.status.status)
+  }
 }
