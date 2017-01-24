@@ -1,6 +1,7 @@
 package pawzzle.tenant.service.application
 
 import pawzzle.library.service.application.Service
+import pawzzle.library.service.bootstrap.{Configuration, ServiceBootstrap}
 import pawzzle.library.service.domain.EntityID
 import pawzzle.tenant.service.domain.{Tenant, TenantName, TenantRepository}
 import pawzzle.tenant.service.infrastructure.storage.MemoryTenantRepository
@@ -36,17 +37,28 @@ sealed trait TenantService extends Service {
   */
 class TheTenantService extends TenantService {
 
+  // this needs a factory and a property for the repo class in the service.properties file.
   private val repo: TenantRepository = new MemoryTenantRepository()
 
+  override def start(): Unit = {
+    println("TenantService successfully started.")
+  }
+
+  override def restart(): Unit = {}
+
+  override def shutdown(): Unit = {
+    println("TenantService successfully shutdown.")
+  }
+
   override def createTenant(data: CreateTenantInputData): Unit = {
-    require(data != null && data.name != null, "The tenant name should be provided when creating a new tenant.")
+    require(data != null, "The tenant data should be provided when creating a new tenant.")
     val id = repo.uniqueId()
     val tenant = Tenant(id, TenantName(data.name))
     repo.add(tenant)
   }
 
   override def loadTenant(data: LoadTenantInputData): Option[LoadTenantOutputData] = {
-    require(data != null && data.id != null, "The tenant id should be provided when loading an existing tenant.")
+    require(data != null, "The tenant should be provided when loading an existing tenant.")
     repo.get(EntityID(data.id)) match {
       case Some(t) => Some(LoadTenantOutputData(t))
       case None => None
@@ -55,3 +67,4 @@ class TheTenantService extends TenantService {
 
   override def provisionTenant(data: ProvisionTenantInputData): Unit = throw new UnsupportedOperationException
 }
+

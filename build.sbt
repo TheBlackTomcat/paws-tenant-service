@@ -6,5 +6,7 @@ lazy val `pawzzle-tenant-service` = (project in file("."))
     scalaVersion := "2.12.1",
     libraryDependencies ++= Seq(
       "com.theblacktomcat.pawzzle" %% "pawzzle-service-library" % "0.1.0-SNAPSHOT"
-    )
+    ),
+    exportJars := true,
+    oneJarSettings
   )
