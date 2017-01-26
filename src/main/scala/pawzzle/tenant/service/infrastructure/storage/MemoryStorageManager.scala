@@ -12,4 +12,6 @@ object MemoryStorageManager {
   def put(key: Any, value: Any): Unit = storage.put(key, value)
 
   def get(key: Any): Option[Any] = storage.get(key)
+
+  def getAll(): Iterable[Any] = storage.values
 }
