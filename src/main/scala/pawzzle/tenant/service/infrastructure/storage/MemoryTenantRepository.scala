@@ -13,4 +13,3 @@ class MemoryTenantRepository extends StorageAdapter with TenantRepository {
 
   override def get(id: EntityID): Option[Tenant] = MemoryStorageManager.get(id).flatMap(_.asInstanceOf)
 }
-

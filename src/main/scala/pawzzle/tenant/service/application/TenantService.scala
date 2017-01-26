@@ -1,10 +1,9 @@
 package pawzzle.tenant.service.application
 
 import pawzzle.library.service.application.Service
-import pawzzle.library.service.bootstrap.{Configuration, ServiceBootstrap}
+import pawzzle.library.service.bootstrap.Configuration
 import pawzzle.library.service.domain.EntityID
 import pawzzle.tenant.service.domain.{Tenant, TenantName, TenantRepository}
-import pawzzle.tenant.service.infrastructure.storage.MemoryTenantRepository
 
 /**
   * The TenantService trait defining the possible operations on the Tenant domain.
@@ -37,8 +36,8 @@ sealed trait TenantService extends Service {
   */
 class TheTenantService extends TenantService {
 
-  // this needs a factory and a property for the repo class in the service.properties file.
-  private val repo: TenantRepository = new MemoryTenantRepository()
+  private val config: Configuration = Configuration()
+  private val repo: TenantRepository = TenantRepository(config.getProp("tenant.storage.class"))
 
   override def start(): Unit = {
     println("TenantService successfully started.")

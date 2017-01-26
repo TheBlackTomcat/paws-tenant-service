@@ -8,8 +8,5 @@ import pawzzle.tenant.service.application.TenantService
   */
 object TenantServiceBootstrap extends App {
 
-  val service = ServiceBootstrap(Configuration()).boot[TenantService]()
-
-  service.start()
-  service.shutdown()
+  ServiceBootstrap(Configuration()).boot[TenantService]()
 }

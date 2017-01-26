@@ -20,3 +20,16 @@ trait TenantRepository extends Repository {
     */
   def get(id: EntityID): Option[Tenant]
 }
+
+/**
+  * Factory for instantiating a concrete TenantRepository based on the class name.
+  */
+object TenantRepository {
+
+  /**
+    * Creates a new instance of TenantRepository.
+    * @param clazz The concrete class name to be instantiated.
+    * @return A new TenantRepository instance.
+    */
+  def apply(clazz: String): TenantRepository = Class.forName(clazz).newInstance().asInstanceOf[TenantRepository]
+}
