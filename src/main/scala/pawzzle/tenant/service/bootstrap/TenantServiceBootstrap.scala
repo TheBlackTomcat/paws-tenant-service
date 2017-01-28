@@ -1,6 +1,6 @@
 package pawzzle.tenant.service.bootstrap
 
-import pawzzle.library.service.bootstrap.{Configuration, ServiceBootstrap}
+import pawzzle.library.service.bootstrap.ServiceBootstrap
 import pawzzle.tenant.service.application.{CreateTenantData, LoadTenantByIdData, LoadTenantByNameData, TenantService}
 
 /**
@@ -8,7 +8,7 @@ import pawzzle.tenant.service.application.{CreateTenantData, LoadTenantByIdData,
   */
 object TenantServiceBootstrap extends App {
 
-  val service = ServiceBootstrap(Configuration()).boot[TenantService]()
+  val service = ServiceBootstrap.boot[TenantService]()
 
   service.start()
 

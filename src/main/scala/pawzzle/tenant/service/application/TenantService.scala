@@ -1,7 +1,6 @@
 package pawzzle.tenant.service.application
 
 import pawzzle.library.service.application.Service
-import pawzzle.library.service.bootstrap.Configuration
 import pawzzle.library.service.domain.EntityID
 import pawzzle.tenant.service.domain.{Tenant, TenantName, TenantRepository}
 
@@ -43,8 +42,7 @@ sealed trait TenantService extends Service {
   */
 class TheTenantService extends TenantService {
 
-  private val config: Configuration = Configuration()
-  private val repo: TenantRepository = TenantRepository(config.getProp("tenant.storage.class"))
+  private val repo: TenantRepository = TenantRepository()
 
   override def start(): Unit = {
     println("TenantService successfully started.")
