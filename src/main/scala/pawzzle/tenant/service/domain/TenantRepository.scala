@@ -50,7 +50,7 @@ object TenantRepository extends Factory {
     * @return A new TenantRepository instance.
     */
   def apply(): TenantRepository = {
-    val clazz = Configuration.getProp("tenant.storage.class")
+    val clazz = Configuration().getProp("tenant.storage.class")
     Class.forName(clazz).newInstance().asInstanceOf[TenantRepository]
   }
 }
