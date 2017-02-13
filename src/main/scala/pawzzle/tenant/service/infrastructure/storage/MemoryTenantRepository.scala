@@ -1,13 +1,13 @@
 package pawzzle.tenant.service.infrastructure.storage
 
 import pawzzle.library.service.domain.EntityID
-import pawzzle.library.service.infrastructure.StorageAdapter
+import pawzzle.library.service.infrastructure.DataAccessAdapter
 import pawzzle.tenant.service.domain.{Tenant, TenantName, TenantRepository}
 
 /**
   * Dummy in-memory implementation of the tenant repository as a storage adapter.
   */
-class MemoryTenantRepository extends StorageAdapter with TenantRepository {
+class MemoryTenantRepository extends DataAccessAdapter with TenantRepository {
 
   override def add(tenant: Tenant): Unit = {
     MemoryStorageManager.put(tenant.id, tenant)
